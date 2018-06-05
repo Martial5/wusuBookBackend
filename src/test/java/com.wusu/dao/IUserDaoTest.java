@@ -1,6 +1,6 @@
 package com.wusu.dao;
 
-import com.wusu.model.User;
+import com.wusu.model.UserTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class IUserDaoTest {
     @Test
     public void testSelectUser() throws Exception {
         long id = 1;
-        User user = dao.selectUser(id);
+        UserTest user = dao.selectUser(id);
         System.out.println(user.getUsername());
     }
 

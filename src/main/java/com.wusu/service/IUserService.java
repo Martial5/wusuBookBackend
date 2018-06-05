@@ -1,9 +1,9 @@
 package com.wusu.service;
 
-import com.wusu.model.User;
+import com.wusu.model.UserTest;
 
 public interface IUserService {
 
-    public User selectUser(long userId);
+    public UserTest selectUser(long userId);
 
 }

@@ -2,7 +2,7 @@ package com.wusu.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.wusu.model.User;
+import com.wusu.model.UserTest;
 import com.wusu.service.IUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserTestController {
 
     @Resource
     private IUserService userService;
@@ -24,7 +24,7 @@ public class UserController {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         long userId = Long.parseLong(request.getParameter("id"));
-        User user = this.userService.selectUser(userId);
+        UserTest user = this.userService.selectUser(userId);
         ObjectMapper mapper = new ObjectMapper();
         response.getWriter().write(mapper.writeValueAsString(user));
         response.getWriter().close();

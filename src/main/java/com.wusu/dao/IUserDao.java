@@ -1,10 +1,10 @@
 
 package com.wusu.dao;
 
-import com.wusu.model.User;
+import com.wusu.model.UserTest;
 
 public interface IUserDao {
 
-    User selectUser(long id);
+    UserTest selectUser(long id);
 
 }

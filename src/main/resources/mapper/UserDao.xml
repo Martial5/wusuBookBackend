@@ -4,8 +4,8 @@
 <!-- 设置为IUserDao接口方法提供sql语句配置 -->
 <mapper namespace="com.wusu.dao.IUserDao">
 
-    <select id="selectUser" resultType="User" parameterType="long">
-        SELECT * FROM user WHERE id = #{id}
+    <select id="selectUser" resultType="UserTest" parameterType="long">
+        SELECT * FROM usertest WHERE id = #{id}
     </select>
 
 </mapper>
