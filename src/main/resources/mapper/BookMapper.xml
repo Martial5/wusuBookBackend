@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.wusu.dao.BookDao">
+
+    <!--//用来查图书的全部信息-->
+    <select id="findBookById" resultType="Book" parameterType="int">
+        SELECT * FROM book WHERE book_id = #{book_id}
+    </select>
+    <!--//搜索按钮查图书的全部信息-->
+    <select id="findBookByName" resultType="Book" parameterType="String">
+        SELECT * FROM book WHERE book_name like '%${book_name}%'
+    </select>
+    <!--//根据标签查询图书-->
+    <select id="findBookByTag" resultType="Book" parameterType="String">
+        SELECT * FROM book WHERE tag_name = #{tag_name}
+    </select>
+</mapper>

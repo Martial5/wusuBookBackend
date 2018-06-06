@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.wusu.dao.UserDao">
+    <!--用来查用户基本信息-->
+    <select id="findUserById" resultType="User" parameterType="int">
+        SELECT * FROM user WHERE user_id = #{user_id}
+    </select>
+    <!--注册新用户的时候用-->
+    <insert id="addUser" parameterType="User">
+        insert into user (user_name,user_pass,user_del) values(#{user_name},#{user_pass},1)
+    </insert>
+    <!--登录时，注册新用户查重名时候用-->
+    <select id="findUserByName" resultType="User" parameterType="String">
+        SELECT * FROM user WHERE user_name = #{user_name}
+    </select>
+</mapper>

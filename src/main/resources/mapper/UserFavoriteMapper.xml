@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.wusu.dao.UserFavorite">
+
+    <!--//根据user_id查找该用户的收藏图书list-->
+    <select id="findUserFavoriteBookList" resultType="Book" parameterType="user_id">
+        SELECT * FROM user_favorite WHERE user_id = #{user_id}
+    </select>
+    <!--//收藏该图书-->
+    <insert id="updateFavorite" >
+       insert into user_favorite (user_id,book_id) values (#{0},#{1})
+    </insert>
+    <!--//取消收藏该图书-->
+    <delete id="de_updateFavorite" >
+       insert from user_favorite where user_id = #{0} and book_id = #{1}
+    </delete>
+</mapper>
