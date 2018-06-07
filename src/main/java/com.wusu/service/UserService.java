@@ -1,9 +1,10 @@
 package com.wusu.service;
 
-import com.wusu.model.UserTest;
+import com.wusu.model.User;
 
 public interface UserService {
 
-    public UserTest selectUser(long userId);
+    public User findUserByName(String user_name);
 
+    public String addUser(User user);
 }
