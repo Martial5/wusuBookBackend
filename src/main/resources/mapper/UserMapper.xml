@@ -13,6 +13,6 @@
     </insert>
     <!--登录时，注册新用户查重名时候用-->
     <select id="findUserByName" resultType="User" parameterType="String">
-        SELECT * FROM user WHERE user_name = #{user_name}
+        SELECT * FROM user WHERE user_name = #{user_name} and user_del = "1"
     </select>
 </mapper>

@@ -10,10 +10,10 @@
     </select>
     <!--//搜索按钮查图书的全部信息-->
     <select id="findBookByName" resultType="Book" parameterType="String">
-        SELECT * FROM book WHERE book_name like '%${book_name}%'
+        SELECT * FROM book WHERE book_name like '%${_parameter}%'
     </select>
     <!--//根据标签查询图书-->
     <select id="findBookByTag" resultType="Book" parameterType="String">
-        SELECT * FROM book WHERE tag_name = #{tag_name}
+        SELECT * FROM book WHERE book_tag1 = #{tag_name}
     </select>
 </mapper>

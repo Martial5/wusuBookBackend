@@ -5,7 +5,9 @@ import java.util.List;
 
 public interface BookService {
 
-    public List<Book> getBookList();
+    public List<Book> findBookByTag();
+
+    public List<Book> findBookByName(String book_name);
 
     public Book getBook(int book_id);
 }

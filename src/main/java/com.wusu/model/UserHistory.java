@@ -5,7 +5,6 @@ public class UserHistory {
     private int user_history_id;
     private int user_id;
     private int book_id;
-    private Date history_data;
 
     public int getUser_history_id() {
         return user_history_id;
@@ -31,11 +30,4 @@ public class UserHistory {
         this.book_id = book_id;
     }
 
-    public Date getHistory_data() {
-        return history_data;
-    }
-
-    public void setHistory_data(Date history_data) {
-        this.history_data = history_data;
-    }
 }

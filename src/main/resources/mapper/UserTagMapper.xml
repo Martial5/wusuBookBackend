@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+        <!-- 设置为IUserDao接口方法提供sql语句配置 -->
 <mapper namespace="com.wusu.dao.UserTagDao">
 
-    <!--//根据user_id查找该用户的标签-->
-    <select id="findUserTagById" resultType="UserTag" parameterType="int">
-        SELECT * FROM user_tag WHERE user_id = #{user_id}
+
+
+<!--//查找一定范围内最受欢迎图书，按照分数降序排列-->
+<select id="findHotBook" resultType="Book" parameterType="int">
+        SELECT * FROM (SELECT * FROM book LIMIT #{arg0},#{arg1}) p ORDER BY book_score DESC
+</select>
+<!--//根据user_id查找该用户的标签-->
+<select id="findUserTagById" resultType="UserTag" parameterType="int">
+        SELECT * FROM user_tag WHERE user_id = #{user_id} AND tag_iscollected = "1"
     </select>
-    <!--//用户添加tag-->
-    <insert id="addTag">
-        insert into user_tag (user_id,tag_name,tag_collect_times,tag_iscollected) values(#{0},#{1},1,1)
+<!--//用户添加tag-->
+<insert id="addTag">
+        insert into user_tag (user_id,tag_name,tag_collect_times,tag_iscollected) values(#{arg0},#{arg1},1,1)
     </insert>
-    <!--//用户删除tag-->
-    <update id="de_updateTag">
-        update user_tag set tag_iscollected = 0 where user_id = #{0} and tag_name = #{1}
+<!--//用户删除tag-->
+<update id="de_updateTag">
+        update user_tag set tag_iscollected = 0 where user_id = #{arg0} and tag_name = #{arg1}
     </update>
-    <!--//用户恢复tag-->
-    <update id="updateTag">
+<!--//用户恢复tag-->
+<update id="updateTag">
         update user_tag set tag_iscollected = 1 where user_id = #{0} and tag_name = #{1}
     </update>
 </mapper>

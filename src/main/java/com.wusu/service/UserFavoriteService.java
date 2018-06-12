@@ -8,5 +8,5 @@ public interface UserFavoriteService {
 
     public List<Book> findUserFavorite(int user_id);
 
-    public String addUserFavorite(int user_id,int book_id);
+//    public String addUserFavorite(int user_id,int book_id);
 }

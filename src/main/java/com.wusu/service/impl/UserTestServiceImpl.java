@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-@Service("userService")
+@Service("userTestService")
 public class UserTestServiceImpl implements IUserService {
 
     @Resource
-    private IUserDao userDao;
+    private IUserDao iUserDao;
 
     public UserTest selectUser(long userId) {
-        return this.userDao.selectUser(userId);
+        return this.iUserDao.selectUser(userId);
     }
 
 }

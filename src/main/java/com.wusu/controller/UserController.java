@@ -11,6 +11,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -23,19 +25,19 @@ public class UserController {
      * 用户登录
      */
     @RequestMapping("/userLogin.do")
-    public String userLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void userLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Object> map = new HashMap<String, Object>();
+
         String user_name = request.getParameter("user_name");
-        String user_pass = request.getParameter("user_pass");
         User user = this.userService.findUserByName(user_name);
-        if(user.getUser_pass()==user_pass && user.getUser_del() !=0){
-            HttpSession session=request.getSession();
-            session.setAttribute("user", user);
-            return "success";
-        }
-        else
-            return "false";
+        map.put("thisUser",user);
+        String out = objectMapper.writeValueAsString(map);//开始序列化
+        response.getWriter().write(out);
+        response.getWriter().flush();
+        response.getWriter().close();
     }
 
     /**

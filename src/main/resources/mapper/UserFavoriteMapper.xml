@@ -2,11 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 设置为IUserDao接口方法提供sql语句配置 -->
-<mapper namespace="com.wusu.dao.UserFavorite">
+<mapper namespace="com.wusu.dao.UserFavoriteDao">
 
     <!--//根据user_id查找该用户的收藏图书list-->
-    <select id="findUserFavoriteBookList" resultType="Book" parameterType="user_id">
-        SELECT * FROM user_favorite WHERE user_id = #{user_id}
+    <select id="findUserFavoriteBookList" resultType="Book" parameterType="int">
+        SELECT *
+        FROM book,user_favorite
+        WHERE book.book_id=user_favorite.book_id AND user_favorite.user_id = #{user_id}
     </select>
     <!--//收藏该图书-->
     <insert id="updateFavorite" >
